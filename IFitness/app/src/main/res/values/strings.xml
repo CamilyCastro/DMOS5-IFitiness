@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">IFitness</string>
+
+    <!-- MainActivity -->
+    <string name="main_activity">Principal Atividade</string>
+    <string name="activity">ATIVIDADE</string>
+    <string name="level">Nível 0</string>
+    <string name="points">0 pontos</string>
+    <string name="latest_activities">Últimas Atividades</string>
+
+    <!-- ActivityRegisterActivity -->
+    <array name="activity_type">
+        <item>Caminhada</item>
+        <item>Ciclismo</item>
+        <item>Corrida</item>
+        <item>Natação</item>
+    </array>
+    <string name="hint_date">Data</string>
+    <string name="hint_duration">Duração (min)</string>
+    <string name="hint_distance">Distância (Km)</string>
+    <string name="btn_add">Salvar</string>
+    <string name="txt_activity_type">Escolha o tipo de atividade</string>
+    <string name="new_activit">Nova Atividade</string>
+
+    <!-- menu -->
+    <string name="enter">Entrar</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_account">Minha Conta</string>
+    <string name="menu_new_activity">Nova Atividade</string>
+    <string name="menu_statistics">Estatísticas</string>
+    <string name="menu_ranking">Classificação</string>
+    <string name="menu_logout">Sair</string>
+    <string name="toggle_open">Abrir</string>
+    <string name="toggle_close">Fechar</string>
+</resources>
