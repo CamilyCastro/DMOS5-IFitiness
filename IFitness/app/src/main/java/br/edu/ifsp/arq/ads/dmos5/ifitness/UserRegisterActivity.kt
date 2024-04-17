@@ -14,24 +14,24 @@ class UserRegisterActivity : AppCompatActivity() {
     lateinit var txtTitle: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_register)
-        setToolBar()
-        }
+        super.onCreate(savedInstanceState)      //inicializando a tela de perfil/MyAccount
+        setContentView(R.layout.activity_user_register)      //configurando layout
+        setToolBar()    //chamando método que configura barra de ferramentas
+    }
 
     private fun setToolBar() {
-        toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        toolbar = findViewById(R.id.toolbar)        //atribuindo valor ao objeto toolbar
+        setSupportActionBar(toolbar)        //inicializando barra de ferramentas
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)       //configura exibição botão voltar
+        supportActionBar?.setDisplayShowTitleEnabled(false)     //desativa exibição titulo atividade
 
-        txtTitle = findViewById(R.id.toolbar_title)
-        txtTitle.text = getString(R.string.new_user)
+        txtTitle = findViewById(R.id.toolbar_title)     //inicializa title
+        txtTitle.text = getString(R.string.new_user)        //define texto
     }
 
 
-    override fun onSupportNavigateUp(): Boolean {
+    override fun onSupportNavigateUp(): Boolean {        //metodo que encerra atividade atual e volta para a anterior, quando o 'VOLTAR' é pressionado
         onBackPressed()
         return true
     }
