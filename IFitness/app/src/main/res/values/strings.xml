@@ -53,6 +53,7 @@
     <string name="btn_profile_update">Atualizar</string>
     <string name="txt_gender">Gênero</string>
     <string name="user_profile">Minha Conta</string>
+    <string name="login_message">Email e/ou senha não estão corretos.\n</string>
     <array name="gender">
         <item>Masculino</item>
         <item>Feminino</item>

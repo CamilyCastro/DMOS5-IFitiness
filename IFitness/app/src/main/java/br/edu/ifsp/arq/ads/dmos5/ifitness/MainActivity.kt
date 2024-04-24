@@ -4,11 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Observer
+import br.edu.ifsp.arq.ads.dmos5.ifitness.viewModel.UserViewModel
 import com.google.android.material.navigation.NavigationView
 
 
@@ -19,6 +22,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var navigationView: NavigationView
     lateinit var txtTitle: TextView
     lateinit var txtLogin: TextView
+
+    private val userViewModel by viewModels<UserViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)      //inicializa tela principal
@@ -42,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setNavigationView() {
-        navigationView = findViewById(R.id.nav_view)        //inicializando navigationView(Menu)
+        navigationView = findViewById<NavigationView>(R.id.nav_view)        //inicializando navigationView(Menu)
         navigationView.setNavigationItemSelectedListener { item ->      //atribuindo um item adquirido do when(equivalente a switch case) ao objeto intent
             var intent: Intent?
             when (item.itemId) {
