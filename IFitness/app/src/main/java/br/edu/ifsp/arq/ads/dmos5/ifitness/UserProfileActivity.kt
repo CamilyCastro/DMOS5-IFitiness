@@ -1,16 +1,21 @@
 package br.edu.ifsp.arq.ads.dmos5.ifitness
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import br.edu.ifsp.arq.ads.dmos5.ifitness.model.User
-import br.edu.ifsp.arq.ads.dmos5.ifitness.viewModel.UserViewModel
+import br.edu.ifsp.arq.ads.dmos5.ifitnessapp.viewmodel.UserViewModel
+
 import com.google.android.material.textfield.TextInputEditText
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -41,16 +46,60 @@ class UserProfileActivity : AppCompatActivity() {
 
     private fun setBtnProfileUpdate() {
         val dtf: DateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-        btnProfileUpdate = findViewById(R.id.btn_profile_update)
-        btnProfileUpdate.setOnClickListener{
+        if(validate()) {
             user.email = edtEmail.text.toString()
             user.name = edtName.text.toString()
             user.surname = edtSurname.text.toString()
-            user.dateOfBirth = LocalDate.parse(edtDateOfBirth.text.toString(), dtf)
+            user.dateOfBirth = edtDateOfBirth.text.toString()
             user.gender = User.Gender.values()[spnGender.selectedItemPosition]
-
-            userViewModel.updateUser(user)
+            if (userViewModel.updateUser(user)) {
+                Toast.makeText(
+                    applicationContext,
+                    getString(R.string.update_message),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
+    }
+
+    private fun validate() : Boolean {
+        var isValid = true
+
+        edtName.apply {
+            if(text.isNullOrEmpty()) {
+                error = "Preencha o campo nome."
+                isValid = false
+            } else {
+                error = null
+            }
+        }
+        edtEmail.apply {
+            if(text.isNullOrEmpty()) {
+                error = "Preencha o campo email."
+                isValid = false
+            } else {
+                error = null
+            }
+        }
+        edtSurname.apply {
+            if(text.isNullOrEmpty()) {
+                error = "Preencha o campo sobrenome."
+                isValid = false
+            } else {
+                error = null
+            }
+        }
+
+        edtDateOfBirth.apply {
+            if(text.isNullOrEmpty()) {
+                error = "Preencha o campo data de nascimento."
+                isValid = false
+            } else {
+                error = null
+            }
+        }
+
+        return isValid
     }
 
 

@@ -8,7 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import br.edu.ifsp.arq.ads.dmos5.ifitness.model.User
-import br.edu.ifsp.arq.ads.dmos5.ifitness.viewModel.UserViewModel
+import br.edu.ifsp.arq.ads.dmos5.ifitnessapp.viewmodel.UserViewModel
 import com.google.android.material.textfield.TextInputEditText
 
 class UserRegisterActivity : AppCompatActivity() {
@@ -37,21 +37,54 @@ class UserRegisterActivity : AppCompatActivity() {
 
         btnUserRegister = findViewById(R.id.btn_user_register)
         btnUserRegister.setOnClickListener {
-            val user = User(
-                email = edtEmail.text.toString(),
-                name = edtName.text.toString(),
-                surname = "",
-                password = edtPassword.text.toString(),
-                image = "",
-                dateOfBirth = null,
-                gender = User.Gender.PREFIRO_NAO_DIZER
-            )
+            if (validate()) {
+                val user = User(
+                    email = edtEmail.text.toString(),
+                    name = edtName.text.toString(),
+                    surname = "",
+                    password = edtPassword.text.toString(),
+                    image = "",
+                    dateOfBirth = null,
+                    gender = User.Gender.PREFIRO_NAO_DIZER
+                )
 
-            userViewModel.createUser(user)
-            userViewModel.login(user.email, user.password).observe(this, Observer {
-                finish()
-            })
+                userViewModel.createUser(user)
+                userViewModel.login(user.email, user.password).observe(this, Observer {
+                    finish()
+                })
+            }
         }
+    }
+
+    private fun validate() : Boolean {
+        var isValid = true
+
+        edtName.apply {
+            if(text.isNullOrEmpty()) {
+                error = "Preencha o campo nome."
+                isValid = false
+            } else {
+                error = null
+            }
+        }
+        edtEmail.apply {
+            if(text.isNullOrEmpty()) {
+                error = "Preencha o campo email."
+                isValid = false
+            } else {
+                error = null
+            }
+        }
+        edtPassword.apply {
+            if(text.isNullOrEmpty()) {
+                error = "Preencha o campo a senha."
+                isValid = false
+            } else {
+                error = null
+            }
+        }
+
+        return isValid
     }
 
     private fun setToolBar() {

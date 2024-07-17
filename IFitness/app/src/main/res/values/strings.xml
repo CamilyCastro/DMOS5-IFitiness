@@ -54,6 +54,7 @@
     <string name="txt_gender">Gênero</string>
     <string name="user_profile">Minha Conta</string>
     <string name="login_message">Email e/ou senha não estão corretos.\n</string>
+    <string name="update_message">Dados atualizados com sucesso!</string>
     <array name="gender">
         <item>Masculino</item>
         <item>Feminino</item>

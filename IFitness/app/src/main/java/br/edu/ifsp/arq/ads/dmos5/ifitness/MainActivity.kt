@@ -11,7 +11,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
-import br.edu.ifsp.arq.ads.dmos5.ifitness.viewModel.UserViewModel
+import br.edu.ifsp.arq.ads.dmos5.ifitnessapp.viewmodel.UserViewModel
+
 import com.google.android.material.navigation.NavigationView
 
 

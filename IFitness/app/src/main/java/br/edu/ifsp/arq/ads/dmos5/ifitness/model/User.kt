@@ -1,21 +1,24 @@
 package br.edu.ifsp.arq.ads.dmos5.ifitness.model
 
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import java.io.Serializable
-import java.time.LocalDate
 import java.util.UUID
 
 @Entity(tableName = "user")
-data class User (
-    @PrimaryKey val id: String = UUID.randomUUID().toString(),
+data class User(
+    @PrimaryKey var id: String = UUID.randomUUID().toString(),
     var email: String,
     var name: String,
     var surname: String,
-    val password: String,
+    var password: String,
     val image: String,
-    var dateOfBirth: LocalDate?,
+    var dateOfBirth: String?,
     var gender: Gender?): Serializable {
+
+    @Ignore
+    constructor(): this("", "", "", "", "", "", "", null)
 
     enum class Gender(val value: String) {
 

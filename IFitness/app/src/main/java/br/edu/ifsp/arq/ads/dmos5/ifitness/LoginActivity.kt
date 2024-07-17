@@ -10,7 +10,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
-import br.edu.ifsp.arq.ads.dmos5.ifitness.viewModel.UserViewModel
+import br.edu.ifsp.arq.ads.dmos5.ifitnessapp.viewmodel.UserViewModel
+
 import com.google.android.material.textfield.TextInputEditText
 
 class LoginActivity : AppCompatActivity() {
@@ -38,12 +39,16 @@ class LoginActivity : AppCompatActivity() {
         btnLoginUser = findViewById(R.id.btn_login_user)
         btnLoginUser.setOnClickListener {
             userViewModel.login(edtEmail.text.toString(), edtPassword.text.toString()).observe(this, Observer {
-
                 if(it == null)
                     Toast.makeText(applicationContext, getString(R.string.login_message), Toast.LENGTH_SHORT).show()
-                else
+                else {
+                    intent = Intent(
+                        this@LoginActivity,
+                        UserProfileActivity::class.java
+                    )
+                    startActivity(intent)
                     finish()
-
+                }
             })
         }
     }
