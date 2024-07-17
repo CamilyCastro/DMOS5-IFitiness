@@ -65,10 +65,11 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
 
+
                 R.id.nav_activity -> {
                     intent = Intent(
                         this@MainActivity,
-                        ActivityRegisterActivity::class.java        //neste caso intent recebe ActivityRegister
+                        MyActivitiesListActivity::class.java
                     )
                     startActivity(intent)
                 }

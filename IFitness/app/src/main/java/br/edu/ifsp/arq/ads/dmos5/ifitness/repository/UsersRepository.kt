@@ -134,4 +134,26 @@ class UsersRepository (application: Application) {
 
     }
 
+    fun resetPassword(email: String) {
+
+        val params = JSONObject().also {
+            it.put("email", email)
+            it.put("requestType", "PASSWORD_RESET")
+        }
+
+        val request = JsonObjectRequest(Request.Method.POST
+            , BASE_URL + PASSWORD_RESET + KEY
+            , params
+            , Response.Listener { response ->
+                Log.d(this.toString(), response.keys().toString())
+            }
+            , Response.ErrorListener { error ->
+                Log.e(this.toString(), error.message ?: "Error")
+            }
+        )
+
+        queue.add(request)
+
+    }
+
 }
